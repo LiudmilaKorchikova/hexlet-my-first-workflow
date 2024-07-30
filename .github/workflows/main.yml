@@ -1,0 +1,24 @@
+# .github/workflows/main.yml
+name: Run Makefile
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Make
+      run: sudo apt-get install make
+
+    - name: Run say-hello
+      run: make say-hello
